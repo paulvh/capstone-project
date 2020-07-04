@@ -1,13 +1,32 @@
 import React from 'react';
 import styled from 'styled-components'
 
-export default function Button(){
+export default function Button({buttonCount = 1, buttonName , onClickFunction, message}){
     
-    return(
-        <StyledButtonBorder>
-            <StyledButton>Button 1</StyledButton>
-        </StyledButtonBorder>
-    )  
+    if(buttonCount === 1){
+        return(
+            <StyledButtonBorder>
+                <StyledButton onClick={() => onClickFunction(message)}>{buttonName[0]}</StyledButton>
+            </StyledButtonBorder>
+        )   
+    }
+    
+    /* if(buttonCount ===2){
+        return(
+            <StyledButtonBorder>
+
+            </StyledButtonBorder>
+        )
+    } 
+
+    if(buttonCount ===3){
+        return(
+            <StyledButtonBorder>
+
+            </StyledButtonBorder>
+        )
+    } */
+     
 }
 
 
@@ -15,12 +34,16 @@ export default function Button(){
 
 
 const StyledButton = styled.button`
-    width: 150px;
-    height: 50px;
-    background: #f65164;
+    background: #e7394d;
     border: none; 
     color: e9ebf9;
     border-radius: 5px;
+    width: 150px;
+    height: 50px;
+    
+    &:active{
+        background: #f65164;
+    }
 `
 
 const StyledButtonBorder = styled.div`

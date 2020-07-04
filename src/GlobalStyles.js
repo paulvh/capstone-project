@@ -9,16 +9,17 @@ export default createGlobalStyle`
     body {
         margin: 0;
         background: #272b4d;
-        height: 100vh;   
+        height: 100vh;
+        padding: 50px 10px;   
     }
+    
     main {
-        margin: 50px 10px;
         border-radius: 15px;
         box-shadow: inset 10px 10px 15px #212541, inset -10px -10px 15px #2d3159;
-        height: 500px;
-        
-        display: flex;
+        padding: 50px 20px;
+        display: grid;
+        gap: 20px;
         justify-content: center;
-        align-items: center;
+        overflow: scroll;
     } 
 `
