@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import ButtonGroup from './Components/ButtonGroup'
-import Header from './Components/Header'
+import ButtonGroup from './components/ButtonGroup'
+import Header from './components/Header'
 
 const websocket = new WebSocket('ws://localhost:8080')
 websocket.addEventListener('open', () => {
@@ -13,6 +13,7 @@ function App() {
 
   useEffect(() => {
     message && websocket.send(message)
+    // eslint-disable-next-line
   }, [update])
 
   return (
@@ -20,29 +21,31 @@ function App() {
       <Header />
       <main>
         <ButtonGroup
-          buttonNames={['Button 1', 'Button 2', 'Button 3']}
+          buttonVariables={[
+            { name: 'Button 1', message: '1' },
+            { name: 'Button 2', message: '2' },
+            { name: 'Button 3', message: '3' },
+          ]}
           onClickFunction={sendMessage}
-          messages={['1', '2', '3']}
         />
         <ButtonGroup
-          buttonNames={['Button 4']}
+          buttonVariables={[{ name: 'Button 4', message: '4' }]}
           onClickFunction={sendMessage}
-          messages={['4']}
         />
         <ButtonGroup
-          buttonNames={['Button 5']}
+          buttonVariables={[{ name: 'Button 5', message: '5' }]}
           onClickFunction={sendMessage}
-          messages={['5']}
         />
         <ButtonGroup
-          buttonNames={['Button 6']}
+          buttonVariables={[{ name: 'Button 6', message: '6' }]}
           onClickFunction={sendMessage}
-          messages={['6']}
         />
         <ButtonGroup
-          buttonNames={['Button 7', 'Button 8']}
+          buttonVariables={[
+            { name: 'Button 7', message: '7' },
+            { name: 'Button 8', message: '8' },
+          ]}
           onClickFunction={sendMessage}
-          messages={['7', '8']}
         />
       </main>
     </>

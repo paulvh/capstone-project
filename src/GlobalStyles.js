@@ -1,10 +1,15 @@
-import React from 'react'
 import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
+    
+    :root{
+        
+    }
+    
     * {
         box-sizing: border-box;
     }
+    
     body {
         margin: 0;
         background: #272b4d;

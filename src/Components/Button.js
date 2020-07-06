@@ -2,28 +2,28 @@ import React from 'react'
 import styled from 'styled-components'
 
 export default function Button({
-  buttonName = '',
+  name = '',
   onClickFunction,
   message = '',
-  circularButton = false,
+  isCircular = false,
   colorIndex = 0,
 }) {
-  const colorsActive = ['#275ef9', '#6120f9', '#e7394d']
-  const colors = ['#4e7cff', '#7033ff', '#f65164']
+  const colorsActive = ['#275ef9', '#6120f9', '#22ba5b']
+  const colors = ['#4e7cff', '#7033ff', '#34d872']
 
   const color = colors[colorIndex]
   const colorActive = colorsActive[colorIndex]
 
   return (
     <>
-      {circularButton ? (
+      {isCircular ? (
         <StyledButtonBorder>
           <StyledButton
             onClick={() => onClickFunction(message)}
             buttonColor={color}
             buttonColorActive={colorActive}
           >
-            {buttonName}
+            {name}
           </StyledButton>
         </StyledButtonBorder>
       ) : (
@@ -33,7 +33,7 @@ export default function Button({
             width={150}
             borderRadius={5}
           >
-            {buttonName}
+            {name}
           </StyledButton>
         </StyledButtonBorder>
       )}

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import logo from '../Images/logo.svg'
+import logo from '../images/logo.svg'
 
 export default function Header() {
   return (
@@ -13,5 +13,4 @@ export default function Header() {
 const StyledHeader = styled.header`
   height: 50px;
   display: flex;
-  justify-content: start;
 `
