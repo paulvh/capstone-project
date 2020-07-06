@@ -10,7 +10,7 @@ export default createGlobalStyle`
         margin: 0;
         background: #272b4d;
         height: 100vh;
-        padding: 50px 10px;   
+        padding: 0px 10px 10px 10px; 
     }
     
     main {
@@ -18,7 +18,7 @@ export default createGlobalStyle`
         box-shadow: inset 10px 10px 15px #212541, inset -10px -10px 15px #2d3159;
         padding: 50px 20px;
         display: grid;
-        gap: 20px;
+        gap: 30px;
         justify-content: center;
         overflow: scroll;
     } 

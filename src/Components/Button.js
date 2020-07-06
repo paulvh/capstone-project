@@ -1,32 +1,30 @@
 import React from 'react';
 import styled from 'styled-components'
 
-export default function Button({buttonCount = 1, buttonName , onClickFunction, message}){
+export default function Button({buttonName = '', onClickFunction, message = '', circularButton = false, colorIndex = 0}){
     
-    if(buttonCount === 1){
-        return(
-            <StyledButtonBorder>
-                <StyledButton onClick={() => onClickFunction(message)}>{buttonName[0]}</StyledButton>
-            </StyledButtonBorder>
-        )   
-    }
+    const colorsActive = ['#275ef9', '#6120f9', '#e7394d']
+    const colors = ['#4e7cff','#7033ff','#f65164']
     
-    /* if(buttonCount ===2){
-        return(
-            <StyledButtonBorder>
-
-            </StyledButtonBorder>
-        )
-    } 
-
-    if(buttonCount ===3){
-        return(
-            <StyledButtonBorder>
-
-            </StyledButtonBorder>
-        )
-    } */
-     
+    const color = colors[colorIndex]
+    const colorActive = colorsActive[colorIndex]
+    
+    return(   
+        <>
+        {circularButton ? (
+                <StyledButtonBorder>
+                    <StyledButton onClick={() => onClickFunction(message)} buttonColor={color} buttonColorActive={colorActive}>{buttonName}</StyledButton>
+                </StyledButtonBorder>
+            )
+            :
+            (
+                <StyledButtonBorder borderRadius={5}>
+                    <StyledButton onClick={() => onClickFunction(message)} width={150} borderRadius={5}>{buttonName}</StyledButton>
+                </StyledButtonBorder>
+            )    
+        } 
+        </>    
+    )   
 }
 
 
@@ -34,20 +32,22 @@ export default function Button({buttonCount = 1, buttonName , onClickFunction, m
 
 
 const StyledButton = styled.button`
-    background: #e7394d;
+    
+    background: ${props => props.buttonColor || '#f65164'};
     border: none; 
     color: e9ebf9;
-    border-radius: 5px;
-    width: 150px;
+    border-radius: ${props => props.borderRadius || 25}px;
+    width: ${props => props.width || 50}px;
     height: 50px;
     
     &:active{
-        background: #f65164;
+        
+        background: ${props => props.buttonColorActive || '#e7394d'}
     }
 `
-
 const StyledButtonBorder = styled.div`
-    border-radius: 5px;
-    box-shadow:  5px 5px 6px #1d2039, -5px -5px 6px #313661;
+    border-radius: ${props => props.borderRadius || 30}px;
+    box-shadow:  5px 5px 8px #1d2039, -5px -5px 8px #313661;
     padding: 5px;
 `
+
