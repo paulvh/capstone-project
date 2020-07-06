@@ -13,7 +13,6 @@ function App() {
 
   useEffect(() => {
     message && websocket.send(message)
-    message && console.log(message)
   }, [update])
 
   return (
