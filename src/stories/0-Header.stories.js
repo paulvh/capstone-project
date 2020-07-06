@@ -6,8 +6,8 @@ export default {
   component: Header,
 };
 
-export const Header = () => <Header/>;
+export const Logo = () => <Header/>;
 
-ToStorybook.story = {
+/* ToStorybook.story = {
   name: 'Header',
-};
+}; */
