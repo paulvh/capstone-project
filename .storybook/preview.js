@@ -1,5 +1,5 @@
 import React from 'react';
 import { addDecorator } from '@storybook/react';
-import Center from './center';
+import Background from './background';
 
-addDecorator(storyFn => <Center>{storyFn()}</Center>);
+addDecorator(storyFn => <Background>{storyFn()}</Background>);

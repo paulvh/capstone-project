@@ -47,7 +47,7 @@ const StyledButton = styled.button`
 `
 const StyledButtonBorder = styled.div`
     border-radius: ${props => props.borderRadius || 30}px;
-    box-shadow:  5px 5px 8px #1d2039, -5px -5px 8px #313661;
-    padding: 5px;
+    box-shadow:  6px 6px 8px #1d2039, -6px -6px 8px #313661;
+    padding: 6px;
 `
 
