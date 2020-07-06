@@ -16,7 +16,7 @@ afterEach(() => {
 })
 
 describe('button behaviour based on input value', () => {
-  it('renders with or without text', () => {
+  it('renders with props or without', () => {
     act(() => {
       render(<Button />, container)
     })
@@ -31,5 +31,3 @@ describe('button behaviour based on input value', () => {
     expect(container.textContent).toBe('Button 1')
   })
 })
-
-describe('check if button should be disabled', () => {})
