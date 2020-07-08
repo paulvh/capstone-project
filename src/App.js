@@ -7,7 +7,36 @@ websocket.addEventListener('open', () => {
   console.log('Connected')
 })
 
-function App() {
+const defaultUI = [
+  {
+    elementType: 'ButtonGroup',
+    elementProperties: [
+      { name: 'Button 1', message: '1' },
+      { name: 'Button 2', message: '2' },
+      { name: 'Button 3', message: '3' },
+    ],
+  },
+  {
+    elementType: 'ButtonGroup',
+    elementProperties: [{ name: 'Button 4', message: '4' }],
+  },
+  {
+    elementType: 'ButtonGroup',
+    elementProperties: [{ name: 'Button 5', message: '5' }],
+  },
+  {
+    elementType: 'ButtonGroup',
+    elementProperties: [{ name: 'Button 6', message: '6' }],
+  },
+  {
+    elementType: 'ButtonGroup',
+    elementProperties: [
+      { name: 'Button 7', message: '7' },
+      { name: 'Button 8', message: '8' },
+    ],
+  },
+]
+export default function App() {
   const [message, setMessage] = useState('')
   const [update, setUpdate] = useState(0)
 
@@ -20,33 +49,15 @@ function App() {
     <>
       <Header />
       <main>
-        <ButtonGroup
-          buttonVariables={[
-            { name: 'Button 1', message: '1' },
-            { name: 'Button 2', message: '2' },
-            { name: 'Button 3', message: '3' },
-          ]}
-          onClickFunction={sendMessage}
-        />
-        <ButtonGroup
-          buttonVariables={[{ name: 'Button 4', message: '4' }]}
-          onClickFunction={sendMessage}
-        />
-        <ButtonGroup
-          buttonVariables={[{ name: 'Button 5', message: '5' }]}
-          onClickFunction={sendMessage}
-        />
-        <ButtonGroup
-          buttonVariables={[{ name: 'Button 6', message: '6' }]}
-          onClickFunction={sendMessage}
-        />
-        <ButtonGroup
-          buttonVariables={[
-            { name: 'Button 7', message: '7' },
-            { name: 'Button 8', message: '8' },
-          ]}
-          onClickFunction={sendMessage}
-        />
+        {defaultUI.map(
+          (inputElement) =>
+            inputElement.elementType === 'ButtonGroup' && (
+              <ButtonGroup
+                buttonVariables={inputElement.elementProperties}
+                onClick={sendMessage}
+              />
+            )
+        )}
       </main>
     </>
   )
@@ -56,5 +67,3 @@ function App() {
     setUpdate(update + 1)
   }
 }
-
-export default App

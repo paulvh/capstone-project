@@ -3,25 +3,20 @@ import styled from 'styled-components'
 
 export default function Button({
   name = '',
-  onClickFunction,
+  onClick,
   message = '',
   isCircular = false,
   colorIndex = 0,
 }) {
-  const colorsActive = ['#275ef9', '#6120f9', '#22ba5b']
-  const colors = ['#4e7cff', '#7033ff', '#34d872']
-
-  const color = colors[colorIndex]
-  const colorActive = colorsActive[colorIndex]
+  const colorThemes = [blueTheme, purpleTheme, greenTheme]
 
   return (
     <>
       {isCircular ? (
         <StyledButtonBorder>
           <StyledButton
-            onClick={() => onClickFunction(message)}
-            buttonColor={color}
-            buttonColorActive={colorActive}
+            onClick={() => onClick(message)}
+            theme={colorThemes[colorIndex]}
           >
             {name}
           </StyledButton>
@@ -29,9 +24,10 @@ export default function Button({
       ) : (
         <StyledButtonBorder borderRadius={5}>
           <StyledButton
-            onClick={() => onClickFunction(message)}
+            onClick={() => onClick(message)}
             width={150}
             borderRadius={5}
+            theme={theme}
           >
             {name}
           </StyledButton>
@@ -42,7 +38,7 @@ export default function Button({
 }
 
 const StyledButton = styled.button`
-  background: ${(props) => props.buttonColor || '#f65164'};
+  background: ${(props) => props.theme.bgc};
   border: none;
   color: e9ebf9;
   border-radius: ${(props) => props.borderRadius || 25}px;
@@ -50,9 +46,35 @@ const StyledButton = styled.button`
   height: 50px;
 
   &:active {
-    background: ${(props) => props.buttonColorActive || '#e7394d'};
+    box-shadow: inset 7px 7px 14px ${(props) => props.theme.bsLight},
+      inset -7px -7px 14px ${(props) => props.theme.bsDark};
   }
 `
+
+const theme = {
+  bgc: '#f65164',
+  bsLight: '#af3a47',
+  bsDark: '#ff6881',
+}
+
+const blueTheme = {
+  bgc: '#4e7cff',
+  bsLight: '#3758b5',
+  bsDark: '#65a0ff',
+}
+
+const purpleTheme = {
+  bgc: '#7033ff',
+  bsLight: '#5024b5',
+  bsDark: '#9042ff',
+}
+
+const greenTheme = {
+  bgc: '#34d872',
+  bsLight: '#259951',
+  bsDark: '#43ff93',
+}
+
 const StyledButtonBorder = styled.div`
   border-radius: ${(props) => props.borderRadius || 30}px;
   box-shadow: 6px 6px 8px #1d2039, -6px -6px 8px #313661;
