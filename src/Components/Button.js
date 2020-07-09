@@ -46,7 +46,7 @@ const StyledButton = styled.button`
   height: 50px;
   
   &:active {
-    transition: box-shadow 0.15s ease-in-out;
+    transition: box-shadow 0.1s ease-out;
     box-shadow: inset 7px 7px 14px ${(props) => props.theme.bsLight},
       inset -7px -7px 14px ${(props) => props.theme.bsDark}; */
   }
