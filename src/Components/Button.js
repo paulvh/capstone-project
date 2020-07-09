@@ -57,25 +57,25 @@ const StyledButton = styled.button`
 `
 
 const theme = {
-  bgc: '#f65164',
+  bgc: 'linear-gradient(145deg, #dd495a, #ff576b)' /* '#f65164' */,
   bsLight: '#af3a47',
   bsDark: '#ff6881',
 }
 
 const blueTheme = {
-  bgc: '#4e7cff',
+  bgc: 'linear-gradient(145deg, #4670e6, #5385ff)' /* '#4e7cff' */,
   bsLight: '#3758b5',
   bsDark: '#65a0ff',
 }
 
 const purpleTheme = {
-  bgc: '#7033ff',
+  bgc: 'linear-gradient(145deg, #652ee6, #7837ff)' /* '#7033ff' */,
   bsLight: '#5024b5',
   bsDark: '#9042ff',
 }
 
 const greenTheme = {
-  bgc: '#34d872',
+  bgc: 'linear-gradient(145deg, #2fc267, #38e77a)' /* '#34d872' */,
   bsLight: '#259951',
   bsDark: '#43ff93',
 }
