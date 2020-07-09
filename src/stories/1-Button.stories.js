@@ -1,6 +1,6 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
-import Button from '../Components/Button.js'
+import Button from '../components/Button.js'
 
 export default {
   title: 'Button',
@@ -8,9 +8,9 @@ export default {
 }
 
 export const Rectangular = () => (
-  <Button circularButton={false} name="hello" onClick={action('clicked')} />
+  <Button isCircular={false} name="hello" onClick={action('clicked')} />
 )
 
 export const Circular = () => (
-  <Button circularButton={true} name="hello" onClick={action('clicked')} />
+  <Button isCircular={true} name="hello" onClick={action('clicked')} />
 )

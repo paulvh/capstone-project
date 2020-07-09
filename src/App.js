@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import ButtonGroup from './components/ButtonGroup'
 import Header from './components/Header'
+import UserInterface from './components/UserInterface'
+import { Switch, Route } from 'react-router-dom'
+import Footer from './components/Footer'
 
 const websocket = new WebSocket('ws://localhost:8080')
 websocket.addEventListener('open', () => {
@@ -49,16 +51,20 @@ export default function App() {
     <>
       <Header />
       <main>
-        {defaultUI.map(
-          (inputElement) =>
-            inputElement.elementType === 'ButtonGroup' && (
-              <ButtonGroup
-                buttonVariables={inputElement.elementProperties}
-                onClick={sendMessage}
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <UserInterface
+                userinterface={defaultUI}
+                messageFunction={sendMessage}
               />
-            )
-        )}
+            )}
+          />
+        </Switch>
       </main>
+      <Footer />
     </>
   )
 

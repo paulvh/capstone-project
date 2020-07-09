@@ -44,10 +44,15 @@ const StyledButton = styled.button`
   border-radius: ${(props) => props.borderRadius || 25}px;
   width: ${(props) => props.width || 50}px;
   height: 50px;
-
+  
   &:active {
+    transition: box-shadow 0.15s ease-in-out;
     box-shadow: inset 7px 7px 14px ${(props) => props.theme.bsLight},
-      inset -7px -7px 14px ${(props) => props.theme.bsDark};
+      inset -7px -7px 14px ${(props) => props.theme.bsDark}; */
+  }
+
+  &:focus {
+    outline: none;
   }
 `
 
