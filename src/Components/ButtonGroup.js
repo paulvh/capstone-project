@@ -3,13 +3,17 @@ import styled from 'styled-components'
 import Button from './Button'
 
 export default function ButtonGroup({ buttonVariables, onClick }) {
-  const isButtonGroup = buttonVariables.length > 1
+  let buttonType = 'rectangular'
+
+  if (buttonVariables.length > 1) {
+    buttonType = 'circular'
+  }
 
   return (
     <StyledButtonGroup>
       {buttonVariables.map((variables, index) => (
         <Button
-          isCircular={isButtonGroup}
+          type={buttonType}
           name={variables.name}
           onClick={onClick}
           message={variables.message}

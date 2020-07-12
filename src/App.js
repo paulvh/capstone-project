@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Header from './components/Header'
-import UserInterface from './components/UserInterface'
+import UserInterface from './pages/UserInterface'
+import EditUserInterface from './pages/EditUserInterface'
 import { Switch, Route } from 'react-router-dom'
-import Footer from './components/Footer'
+import AddButtonGroup from './pages/AddButtonGroup'
 
 const websocket = new WebSocket('ws://localhost:8080')
 websocket.addEventListener('open', () => {
@@ -40,36 +41,54 @@ const defaultUI = [
 ]
 export default function App() {
   const [message, setMessage] = useState('')
-  const [update, setUpdate] = useState(0)
+  const [clickEvent, setUpdate] = useState(0)
+  const [userinterface, setUserinterface] = useState(defaultUI)
+  const [editedInterface, setEditedInterface] = useState(userinterface)
 
   useEffect(() => {
     message && websocket.send(message)
     // eslint-disable-next-line
-  }, [update])
+  }, [clickEvent])
 
   return (
     <>
       <Header />
-      <main>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <UserInterface
-                userinterface={defaultUI}
-                messageFunction={sendMessage}
-              />
-            )}
-          />
-        </Switch>
-      </main>
-      <Footer />
+
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <UserInterface
+              userinterface={defaultUI}
+              messageFunction={sendMessage}
+            />
+          )}
+        />
+        <Route
+          path="/editUI"
+          render={() => (
+            <EditUserInterface
+              editedInterface={editedInterface}
+              setEditedInterface={setEditedInterface}
+            />
+          )}
+        />
+        <Route
+          path="/AddButton"
+          render={() => (
+            <AddButtonGroup
+              editedInterface={editedInterface}
+              setEditedInterface={setEditedInterface}
+            />
+          )}
+        />
+      </Switch>
     </>
   )
 
   function sendMessage(message) {
     setMessage(message)
-    setUpdate(update + 1)
+    setUpdate(clickEvent + 1)
   }
 }

@@ -26,4 +26,8 @@ export default createGlobalStyle`
         justify-content: center;
         overflow: scroll;
     } 
+
+    .buttonBorder{
+        box-shadow: 6px 6px 8px #1d2039, -6px -6px 8px #313661;
+    }
 `

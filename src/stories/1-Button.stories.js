@@ -14,3 +14,7 @@ export const Rectangular = () => (
 export const Circular = () => (
   <Button isCircular={true} name="hello" onClick={action('clicked')} />
 )
+
+export const Delete = () => (
+  <Button isDelete={true} name="" onClick={action('clicked')} />
+)
