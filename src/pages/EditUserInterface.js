@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ButtonGroup from '../components/ButtonGroup'
 import styled from 'styled-components'
 import Button from '../components/Button'
-import { NavLink } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import Footer from '../components/Footer'
 
 export default function EditUserInterface({
   editedInterface,
   setEditedInterface,
+  setUserinterface,
 }) {
+  const history = useHistory()
+
   return (
     <>
       <main>
@@ -24,9 +27,16 @@ export default function EditUserInterface({
               </StyledEditField>
             )
         )}
-        <NavLink to="/AddButton">Add Button</NavLink>
+        <Button
+          type="misc"
+          name="Add Button"
+          onClick={() => history.push('/AddButton')}
+        />
       </main>
-      <Footer currentPage={'editUserinterface'} />
+      <Footer
+        currentPage={'editUserinterface'}
+        saveFunction={saveToLocalStorage}
+      />
     </>
   )
 
@@ -36,6 +46,11 @@ export default function EditUserInterface({
       ...editedInterface.slice(index + 1),
     ]
     setEditedInterface(newInterface)
+  }
+
+  function saveToLocalStorage() {
+    localStorage.setItem('interface', JSON.stringify(editedInterface))
+    setUserinterface(editedInterface)
   }
 }
 

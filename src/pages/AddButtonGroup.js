@@ -6,20 +6,8 @@ export default function AddButtonGroup({
   editedInterface,
   setEditedInterface,
 }) {
-  const [buttonCount, setButtonCount] = useState(0)
   const [buttonGroup, setButtonGroup] = useState([])
   const [buttonList, setbuttonList] = useState([])
-
-  useEffect(() => {
-    let objectList = []
-    let titleList = []
-    for (let i = 1; i <= buttonCount; i++) {
-      objectList = [...objectList, { name: '', message: '' }]
-      titleList = [...titleList, i + '. Button']
-    }
-    setButtonGroup(objectList)
-    setbuttonList(titleList)
-  }, [buttonCount])
 
   return (
     <>
@@ -44,14 +32,23 @@ export default function AddButtonGroup({
       <Footer currentPage={'addButtonGroup'} />
     </>
   )
+
   function handleSelect(event) {
-    setButtonCount(Number(event.target.value))
+    const buttonCount = event.target.value
+    let objectList = []
+    let titleList = []
+    for (let i = 1; i <= buttonCount; i++) {
+      objectList = [...objectList, { name: '', message: '' }]
+      titleList = [...titleList, i + '. Button']
+    }
+    setButtonGroup(objectList)
+    setbuttonList(titleList)
   }
+
   function handleSubmit(event) {
     event.preventDefault()
     let buttonElement = { elementType: 'ButtonGroup', elementProperties: [] }
     buttonElement.elementProperties = buttonGroup
     setEditedInterface([...editedInterface, buttonElement])
-    setButtonCount(0)
   }
 }

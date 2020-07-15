@@ -2,7 +2,11 @@ import React from 'react'
 import ButtonGroup from '../components/ButtonGroup'
 import Footer from '../components/Footer'
 
-export default function UserInterface({ userinterface, messageFunction }) {
+export default function UserInterface({
+  userinterface,
+  setEditedInterface,
+  messageFunction,
+}) {
   return (
     <>
       <main>
@@ -16,7 +20,11 @@ export default function UserInterface({ userinterface, messageFunction }) {
             )
         )}
       </main>
-      <Footer currentPage={'userinterface'} />
+      <Footer
+        currentPage={'userinterface'}
+        setEditedInterface={setEditedInterface}
+        userinterface={userinterface}
+      />
     </>
   )
 }

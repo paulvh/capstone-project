@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
 
 export default function TextInput({
   title,
@@ -17,22 +18,22 @@ export default function TextInput({
   return (
     <>
       <h3>{title}</h3>
-      <input
+      <StyledInput
         name="name"
         type="text"
         value={props.name}
         onChange={handleChange}
         placeholder="Button-Name..."
         required
-      ></input>
-      <input
+      ></StyledInput>
+      <StyledInput
         name="message"
         type="text"
         value={props.message}
         onChange={handleChange}
         placeholder="Button-Message..."
         required
-      ></input>
+      ></StyledInput>
     </>
   )
 
@@ -40,3 +41,9 @@ export default function TextInput({
     setProps({ ...props, [event.target.name]: event.target.value })
   }
 }
+
+const StyledInput = styled.input`
+  background: #dddddd;
+  box-shadow: inset 9px 9px 18px #b5b5b5, inset -9px -9px 18px #ffffff;
+  border-radius: 8px;
+`

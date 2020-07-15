@@ -41,9 +41,16 @@ const defaultUI = [
 ]
 export default function App() {
   const [message, setMessage] = useState('')
-  const [clickEvent, setUpdate] = useState(0)
-  const [userinterface, setUserinterface] = useState(defaultUI)
-  const [editedInterface, setEditedInterface] = useState(userinterface)
+  const [clickEvent, setClickEvent] = useState(0)
+  const [userinterface, setUserinterface] = useState([])
+  const [editedInterface, setEditedInterface] = useState([])
+
+  useEffect(() => {
+    setUserinterface(JSON.parse(localStorage.getItem('interface')) || defaultUI)
+    setEditedInterface(
+      JSON.parse(localStorage.getItem('interface')) || defaultUI
+    )
+  }, [])
 
   useEffect(() => {
     message && websocket.send(message)
@@ -60,8 +67,9 @@ export default function App() {
           path="/"
           render={() => (
             <UserInterface
-              userinterface={defaultUI}
+              userinterface={userinterface}
               messageFunction={sendMessage}
+              setEditedInterface={setEditedInterface}
             />
           )}
         />
@@ -71,6 +79,7 @@ export default function App() {
             <EditUserInterface
               editedInterface={editedInterface}
               setEditedInterface={setEditedInterface}
+              setUserinterface={setUserinterface}
             />
           )}
         />
@@ -89,6 +98,6 @@ export default function App() {
 
   function sendMessage(message) {
     setMessage(message)
-    setUpdate(clickEvent + 1)
+    setClickEvent(clickEvent + 1)
   }
 }

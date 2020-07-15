@@ -3,10 +3,10 @@ import styled from 'styled-components'
 
 export default function Button({
   name = '',
-  onClick,
+  onClick = () => console.log(message),
   message = '',
   colorIndex = 0,
-  className,
+  className = '',
   type = 'rectangular',
   form = '',
 }) {
@@ -43,11 +43,12 @@ export default function Button({
     )
   } else if (type === 'misc') {
     return (
-      <StyledButtonBorder borderRadius={31} className={className}>
+      <StyledButtonBorder borderRadius={21} className={className} width={102}>
         <StyledButton
           onClick={onClick}
-          width={150}
-          borderRadius={25}
+          width={90}
+          borderRadius={15}
+          height={30}
           theme={greenTheme}
           form={form}
         >
