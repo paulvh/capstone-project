@@ -2,19 +2,23 @@ import React from 'react'
 import styled from 'styled-components'
 import Button from './Button'
 
-export default function ButtonGroup({ buttonVariables, onClickFunction }) {
-  const isButtonGroup = buttonVariables.length > 1
+export default function ButtonGroup({ buttonVariables, onClick }) {
+  let buttonType = 'rectangular'
+
+  if (buttonVariables.length > 1) {
+    buttonType = 'circular'
+  }
 
   return (
     <StyledButtonGroup>
-      {buttonVariables.map((vars, index) => (
+      {buttonVariables.map((variables, index) => (
         <Button
-          isCircular={isButtonGroup}
-          name={vars.name}
-          onClickFunction={onClickFunction}
-          message={vars.message}
+          type={buttonType}
+          name={variables.name}
+          onClick={onClick}
+          message={variables.message}
           colorIndex={index}
-          key={vars.name + vars.message + index}
+          key={variables.name + variables.message + index}
         />
       ))}
     </StyledButtonGroup>

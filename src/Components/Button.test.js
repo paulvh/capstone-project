@@ -24,7 +24,7 @@ describe('button behaviour based on input value', () => {
 
     act(() => {
       render(
-        <Button buttonName="Button 1" onClickFunction={console.log('Test')} />,
+        <Button name="Button 1" onClickFunction={console.log('Test')} />,
         container
       )
     })
