@@ -8,21 +8,20 @@ export default function AddButtonGroup({
   setEditedInterface,
 }) {
   const [buttonGroup, setButtonGroup] = useState([])
-  const [buttonList, setbuttonList] = useState([])
 
   return (
     <>
       <main>
-        <StyledSelect onChange={handleSelect}>
-          <option value="0">--How many buttons?--</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </StyledSelect>
         <form id="addButton" onSubmit={handleSubmit}>
-          {buttonList.map((button, index) => (
+          <StyledSelect name="buttonCount" onChange={handleSelect}>
+            <option value="0">--How many buttons?--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </StyledSelect>
+          {buttonGroup.map((_, index) => (
             <TextInput
-              title={button}
+              title={index + 1 + '. Button'}
               buttonNumber={index}
               buttonGroup={buttonGroup}
               setButtonGroup={setButtonGroup}
@@ -40,10 +39,8 @@ export default function AddButtonGroup({
     let titleList = []
     for (let i = 1; i <= buttonCount; i++) {
       objectList = [...objectList, { name: '', message: '' }]
-      titleList = [...titleList, i + '. Button']
     }
     setButtonGroup(objectList)
-    setbuttonList(titleList)
   }
 
   function handleSubmit(event) {
@@ -51,6 +48,8 @@ export default function AddButtonGroup({
     let buttonElement = { elementType: 'ButtonGroup', elementProperties: [] }
     buttonElement.elementProperties = buttonGroup
     setEditedInterface([...editedInterface, buttonElement])
+    event.target.buttonCount.value = '0'
+    setButtonGroup([])
   }
 }
 
