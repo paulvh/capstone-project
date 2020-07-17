@@ -15,6 +15,7 @@ export default createGlobalStyle`
         background: #272b4d;
         height: 100vh;
         padding: 0px 10px 10px 10px; 
+        font-family: sans-serif
     }
     
     main {

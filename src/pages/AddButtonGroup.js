@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import TextInput from '../components/TextInput'
 import Footer from '../components/Footer'
+import styled from 'styled-components'
 
 export default function AddButtonGroup({
   editedInterface,
@@ -12,12 +13,12 @@ export default function AddButtonGroup({
   return (
     <>
       <main>
-        <select onChange={handleSelect}>
+        <StyledSelect onChange={handleSelect}>
           <option value="0">--How many buttons?--</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
-        </select>
+        </StyledSelect>
         <form id="addButton" onSubmit={handleSubmit}>
           {buttonList.map((button, index) => (
             <TextInput
@@ -52,3 +53,16 @@ export default function AddButtonGroup({
     setEditedInterface([...editedInterface, buttonElement])
   }
 }
+
+const StyledSelect = styled.select`
+  appearance: none;
+  border: none;
+  width: 200px;
+  padding: 10px;
+  background: #c0c4ed;
+  box-shadow: inset 5px 5px 10px #9c9fc0, inset -5px -5px 10px #e4e9ff;
+
+  &:focus {
+    outline: none;
+  }
+`
