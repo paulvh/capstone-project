@@ -9,7 +9,7 @@ export default function Footer({
   setEditedInterface,
   userinterface,
 }) {
-  const pageNames = ['userinterface', 'editUserinterface', 'addButtonGroup']
+  const pageNames = ['userinterface', 'editUserinterface', 'addElement']
   const history = useHistory()
 
   if (currentPage === pageNames[0]) {
@@ -38,7 +38,7 @@ export default function Footer({
     return (
       <StyledFooter>
         <Button type="misc" name="Back" onClick={() => setPathto('/editUI')} />
-        <Button type="misc" name="Add" form="addButton" />
+        <Button type="misc" name="Add" form="addElement" />
       </StyledFooter>
     )
   }

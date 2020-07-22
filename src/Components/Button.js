@@ -6,7 +6,6 @@ export default function Button({
   onClick = () => console.log(message),
   message = '',
   colorIndex = 0,
-  className = '',
   type = 'rectangular',
   form = '',
 }) {
@@ -15,23 +14,24 @@ export default function Button({
   if (type === 'delete') {
     return (
       <StyledButtonBorder
-        className={className}
-        borderRadius={7}
+        borderRadius={9}
         padding={2}
-        width="24"
+        width="18"
+        position="absolute"
+        right="-17"
       >
         <StyledButton
           onClick={onClick}
           theme={deleteTheme}
-          width={20}
-          height={20}
-          borderRadius={10}
+          width={14}
+          height={14}
+          borderRadius={7}
         ></StyledButton>
       </StyledButtonBorder>
     )
   } else if (type === 'circular') {
     return (
-      <StyledButtonBorder className={className} width="62">
+      <StyledButtonBorder width="62">
         <StyledButton
           onClick={() => onClick(message)}
           theme={colorThemes[colorIndex]}
@@ -43,7 +43,7 @@ export default function Button({
     )
   } else if (type === 'misc') {
     return (
-      <StyledButtonBorder borderRadius={21} className={className} width={102}>
+      <StyledButtonBorder borderRadius={21} width={102}>
         <StyledButton
           onClick={onClick}
           width={90}
@@ -58,7 +58,7 @@ export default function Button({
     )
   } else if (type === 'rectangular') {
     return (
-      <StyledButtonBorder borderRadius={11} className={className}>
+      <StyledButtonBorder borderRadius={11}>
         <StyledButton
           onClick={() => onClick(message)}
           width={150}
@@ -80,6 +80,7 @@ const StyledButton = styled.button`
   border-radius: ${(props) => props.borderRadius || 25}px;
   width: ${(props) => props.width || 50}px;
   height: ${(props) => props.height || 50}px;
+  text-align: center;
   
   &:active {
     transition: box-shadow 0.1s ease-out;
@@ -123,11 +124,14 @@ const deleteTheme = {
 }
 
 const StyledButtonBorder = styled.div`
+  position: ${(props) => props.position};
+  right: ${(props) => props.right}px;
+  top: ${(props) => props.top}px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: ${(props) => props.width || 162}px;
   border-radius: ${(props) => props.borderRadius || 30}px;
   padding: ${(props) => props.padding || 6}px;
-  box-shadow: 6px 6px 8px #1d2039, -6px -6px 8px #313661;
+  box-shadow: 3px 3px 6px #141628, -3px -3px 6px #3a4072;
 `

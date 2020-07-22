@@ -3,40 +3,37 @@ import Header from './components/Header'
 import UserInterface from './pages/UserInterface'
 import EditUserInterface from './pages/EditUserInterface'
 import { Switch, Route } from 'react-router-dom'
-import AddButtonGroup from './pages/AddButtonGroup'
 
-const websocket = new WebSocket('ws://localhost:8080')
+import AddElement from './pages/AddElement'
+
+const websocket = new WebSocket('ws://192.168.178.34:8765')
 websocket.addEventListener('open', () => {
   console.log('Connected')
 })
 
 const defaultUI = [
   {
-    elementType: 'ButtonGroup',
-    elementProperties: [
-      { name: 'Button 1', message: '1' },
-      { name: 'Button 2', message: '2' },
-      { name: 'Button 3', message: '3' },
-    ],
+    elementType: 'Fader',
+    elementProperties: { name: 'Rot', min: '0', max: '255' },
   },
   {
-    elementType: 'ButtonGroup',
-    elementProperties: [{ name: 'Button 4', message: '4' }],
+    elementType: 'Fader',
+    elementProperties: { name: 'Grün', min: '0', max: '255' },
   },
   {
-    elementType: 'ButtonGroup',
-    elementProperties: [{ name: 'Button 5', message: '5' }],
-  },
-  {
-    elementType: 'ButtonGroup',
-    elementProperties: [{ name: 'Button 6', message: '6' }],
+    elementType: 'Fader',
+    elementProperties: { name: 'Blau', min: '0', max: '255' },
   },
   {
     elementType: 'ButtonGroup',
     elementProperties: [
-      { name: 'Button 7', message: '7' },
-      { name: 'Button 8', message: '8' },
+      { name: 'Rainbow', message: 'rainbow' },
+      { name: 'Strobo', message: 'strobo' },
     ],
+  },
+  {
+    elementType: 'ButtonGroup',
+    elementProperties: [{ name: 'Off', message: 'off' }],
   },
 ]
 export default function App() {
@@ -59,8 +56,7 @@ export default function App() {
 
   return (
     <>
-      <Header />
-
+      <Header className="fixed-position" />
       <Switch>
         <Route
           exact
@@ -84,9 +80,9 @@ export default function App() {
           )}
         />
         <Route
-          path="/AddButton"
+          path="/AddElement"
           render={() => (
-            <AddButtonGroup
+            <AddElement
               editedInterface={editedInterface}
               setEditedInterface={setEditedInterface}
             />

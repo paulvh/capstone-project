@@ -58,9 +58,10 @@ const StyledInput = styled.input`
 `
 const StyledLabel = styled.label`
   background: #272b4d;
-  box-shadow: 7px 7px 14px #141628, -7px -7px 14px #3a4072;
+  box-shadow: 3px 3px 6px #141628, -3px -3px 6px #3a4072;
   padding: 15px;
   border-radius: 10px;
+  text-align: center;
 `
 
 const StyledDiv = styled.div`
@@ -68,6 +69,5 @@ const StyledDiv = styled.div`
   gap: 20px;
 `
 const StyledH3 = styled.h3`
-  margin: 30px 0 0 0;
-  color: #f65164;
+  margin-top: 30px;
 `

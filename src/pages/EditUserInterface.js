@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Button from '../components/Button'
 import { useHistory } from 'react-router-dom'
 import Footer from '../components/Footer'
+import Fader from '../components/Fader'
 
 export default function EditUserInterface({
   editedInterface,
@@ -17,20 +18,23 @@ export default function EditUserInterface({
       <main>
         {editedInterface.map(
           (inputElement, index) =>
-            inputElement.elementType === 'ButtonGroup' && (
+            (inputElement.elementType === 'ButtonGroup' && (
               <StyledEditField>
                 <ButtonGroup buttonVariables={inputElement.elementProperties} />
-                <StyledDeleteButton
-                  type="delete"
-                  onClick={() => deleteElement(index)}
-                />
+                <Button type="delete" onClick={() => deleteElement(index)} />
               </StyledEditField>
-            )
+            )) ||
+            (inputElement.elementType === 'Fader' && (
+              <StyledEditField>
+                <Fader variables={inputElement.elementProperties} />
+                <Button type="delete" onClick={() => deleteElement(index)} />
+              </StyledEditField>
+            ))
         )}
         <Button
           type="misc"
           name="Add Button"
-          onClick={() => history.push('/AddButton')}
+          onClick={() => history.push('/AddElement')}
         />
       </main>
       <Footer
@@ -59,10 +63,5 @@ const StyledEditField = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90vw;
-`
-
-const StyledDeleteButton = styled(Button)`
-  position: absolute;
-  right: 0px;
+  width: 300px;
 `

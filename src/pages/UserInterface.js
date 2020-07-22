@@ -1,6 +1,7 @@
 import React from 'react'
 import ButtonGroup from '../components/ButtonGroup'
 import Footer from '../components/Footer'
+import Fader from '../components/Fader'
 
 export default function UserInterface({
   userinterface,
@@ -12,12 +13,18 @@ export default function UserInterface({
       <main>
         {userinterface.map(
           (inputElement) =>
-            inputElement.elementType === 'ButtonGroup' && (
+            (inputElement.elementType === 'ButtonGroup' && (
               <ButtonGroup
                 buttonVariables={inputElement.elementProperties}
                 onClick={messageFunction}
               />
-            )
+            )) ||
+            (inputElement.elementType === 'Fader' && (
+              <Fader
+                variables={inputElement.elementProperties}
+                sendMessage={messageFunction}
+              />
+            ))
         )}
       </main>
       <Footer
