@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import AddButtonGroup from './AddButtonGroup'
+import AddButtonGroup from '../components/AddButtonGroup'
 import Footer from '../components/Footer'
 import AddFader from '../components/AddFader'
 

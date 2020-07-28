@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import AddElement from './pages/AddElement'
 
-const websocket = new WebSocket('ws://192.168.178.34:8765')
+const websocket = new WebSocket('ws://172.24.1.1:8080')
 websocket.addEventListener('open', () => {
   console.log('Connected')
 })
@@ -14,21 +14,21 @@ websocket.addEventListener('open', () => {
 const defaultUI = [
   {
     elementType: 'Fader',
-    elementProperties: { name: 'Rot', min: '0', max: '255' },
+    elementProperties: { name: 'red', min: '0', max: '255' },
   },
   {
     elementType: 'Fader',
-    elementProperties: { name: 'Grün', min: '0', max: '255' },
+    elementProperties: { name: 'green', min: '0', max: '255' },
   },
   {
     elementType: 'Fader',
-    elementProperties: { name: 'Blau', min: '0', max: '255' },
+    elementProperties: { name: 'blue', min: '0', max: '255' },
   },
   {
     elementType: 'ButtonGroup',
     elementProperties: [
-      { name: 'Rainbow', message: 'rainbow' },
-      { name: 'Strobo', message: 'strobo' },
+      { name: 'blinky', message: 'rainbow' },
+      { name: 'strobo', message: 'strobo' },
     ],
   },
   {

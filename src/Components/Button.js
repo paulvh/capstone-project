@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export default function Button({
   name = '',
-  onClick = () => console.log(message),
+  onClick = () => console.log(),
   message = '',
   colorIndex = 0,
   type = 'rectangular',

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import TextInput from '../components/TextInput'
+import AddButton from './AddButton'
+import { v4 as uuidv4 } from 'uuid'
 
 export default function AddButtonGroup({
   editedInterface,
@@ -22,11 +23,12 @@ export default function AddButtonGroup({
           <option value="3">3</option>
         </select>
         {buttonGroup.map((_, index) => (
-          <TextInput
+          <AddButton
             title={index + 1 + '. Button'}
             buttonNumber={index}
             buttonGroup={buttonGroup}
             setButtonGroup={setButtonGroup}
+            key={uuidv4()}
           />
         ))}
       </form>

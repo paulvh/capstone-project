@@ -22,7 +22,7 @@ export default function Fader({
   )
 
   function onChange(event) {
-    const message = variables.name + ': ' + event.target.value
+    const message = variables.name + '-' + event.target.value
     sendMessage(message)
   }
 }

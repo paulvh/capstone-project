@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Button from './Button'
+import { v4 as uuidv4 } from 'uuid'
 
 export default function ButtonGroup({ buttonVariables, onClick }) {
   let buttonType = 'rectangular'
@@ -18,7 +19,7 @@ export default function ButtonGroup({ buttonVariables, onClick }) {
           onClick={onClick}
           message={variables.message}
           colorIndex={index}
-          key={variables.name + variables.message + index}
+          key={uuidv4()}
         />
       ))}
     </StyledButtonGroup>
