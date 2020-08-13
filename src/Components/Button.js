@@ -16,9 +16,10 @@ export default function Button({
       <StyledButtonBorder
         borderRadius={9}
         padding={2}
-        width="18"
+        width={18}
+        height={18}
         position="absolute"
-        right="-17"
+        right={-17}
       >
         <StyledButton
           onClick={onClick}
@@ -31,7 +32,7 @@ export default function Button({
     )
   } else if (type === 'circular') {
     return (
-      <StyledButtonBorder width="62">
+      <StyledButtonBorder width={62} height={62}>
         <StyledButton
           onClick={() => onClick(message)}
           theme={colorThemes[colorIndex]}
@@ -43,7 +44,7 @@ export default function Button({
     )
   } else if (type === 'misc') {
     return (
-      <StyledButtonBorder borderRadius={21} width={102}>
+      <StyledButtonBorder borderRadius={21} width={102} height={42}>
         <StyledButton
           onClick={onClick}
           width={90}
@@ -80,8 +81,8 @@ const StyledButton = styled.button`
   border-radius: ${(props) => props.borderRadius || 25}px;
   width: ${(props) => props.width || 50}px;
   height: ${(props) => props.height || 50}px;
-  text-align: center;
-  
+  padding: 0;
+
   &:active {
     transition: box-shadow 0.1s ease-out;
     box-shadow: inset 7px 7px 14px ${(props) => props.theme.bsLight},
@@ -131,6 +132,7 @@ const StyledButtonBorder = styled.div`
   justify-content: center;
   align-items: center;
   width: ${(props) => props.width || 162}px;
+  height: ${(props) => props.height || 62}px;
   border-radius: ${(props) => props.borderRadius || 30}px;
   padding: ${(props) => props.padding || 6}px;
   box-shadow: 3px 3px 6px #141628, -3px -3px 6px #3a4072;

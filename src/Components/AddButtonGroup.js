@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import AddButton from './AddButton'
-import { v4 as uuidv4 } from 'uuid'
 
 export default function AddButtonGroup({
   editedInterface,
   setEditedInterface,
 }) {
   const [buttonGroup, setButtonGroup] = useState([])
-  console.log(editedInterface)
-
   return (
     <>
       <form id="addElement" onSubmit={handleSubmit}>
@@ -24,11 +21,11 @@ export default function AddButtonGroup({
         </select>
         {buttonGroup.map((_, index) => (
           <AddButton
-            title={index + 1 + '. Button'}
+            title={index + 1 + '. Button-Properties:'}
             buttonNumber={index}
             buttonGroup={buttonGroup}
             setButtonGroup={setButtonGroup}
-            key={uuidv4()}
+            key={`bg${index}`}
           />
         ))}
       </form>
@@ -38,7 +35,7 @@ export default function AddButtonGroup({
   function handleSelect(event) {
     const buttonCount = event.target.value
     let objectList = []
-    for (let i = 1; i <= buttonCount; i++) {
+    for (let i = 1; i <= Number(buttonCount); i++) {
       objectList = [...objectList, { name: '', message: '' }]
     }
     setButtonGroup(objectList)
@@ -47,7 +44,7 @@ export default function AddButtonGroup({
   function handleSubmit(event) {
     event.preventDefault()
     let buttonElement = { elementType: 'ButtonGroup', elementProperties: [] }
-    buttonElement.elementProperties = buttonGroup
+    buttonElement.elementProperties = [...buttonGroup]
     setEditedInterface([...editedInterface, buttonElement])
     event.target.buttonCount.value = '0'
     setButtonGroup([])

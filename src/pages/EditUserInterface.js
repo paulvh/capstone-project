@@ -5,7 +5,6 @@ import Button from '../components/Button'
 import { useHistory } from 'react-router-dom'
 import Footer from '../components/Footer'
 import Fader from '../components/Fader'
-import { v4 as uuidv4 } from 'uuid'
 
 export default function EditUserInterface({
   editedInterface,
@@ -20,13 +19,13 @@ export default function EditUserInterface({
         {editedInterface.map(
           (inputElement, index) =>
             (inputElement.elementType === 'ButtonGroup' && (
-              <StyledEditField key={uuidv4()}>
+              <StyledEditField key={`euibg${index}`}>
                 <ButtonGroup buttonVariables={inputElement.elementProperties} />
                 <Button type="delete" onClick={() => deleteElement(index)} />
               </StyledEditField>
             )) ||
             (inputElement.elementType === 'Fader' && (
-              <StyledEditField key={uuidv4()}>
+              <StyledEditField key={`euif${index}`}>
                 <Fader variables={inputElement.elementProperties} />
                 <Button type="delete" onClick={() => deleteElement(index)} />
               </StyledEditField>
@@ -34,7 +33,7 @@ export default function EditUserInterface({
         )}
         <Button
           type="misc"
-          name="Add Button"
+          name="Add Element"
           onClick={() => history.push('/AddElement')}
         />
       </main>

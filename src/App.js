@@ -27,7 +27,7 @@ const defaultUI = [
   {
     elementType: 'ButtonGroup',
     elementProperties: [
-      { name: 'blinky', message: 'rainbow' },
+      { name: 'rainbow', message: 'rainbow' },
       { name: 'strobo', message: 'strobo' },
     ],
   },
@@ -35,6 +35,29 @@ const defaultUI = [
     elementType: 'ButtonGroup',
     elementProperties: [{ name: 'Off', message: 'off' }],
   },
+  /* {
+    elementType: 'ButtonGroup',
+    elementProperties: [
+      { name: 'Button 1', message: 'rainbow' },
+      { name: 'Button 2', message: 'strobo' },
+      { name: 'Button 3', message: 'strobo' },
+    ],
+  },
+  {
+    elementType: 'ButtonGroup',
+    elementProperties: [{ name: 'Button 4', message: 'off' }],
+  },
+  {
+    elementType: 'Fader',
+    elementProperties: { name: 'Fader 1', min: '0', max: '255' },
+  },
+  {
+    elementType: 'ButtonGroup',
+    elementProperties: [
+      { name: 'Button 5', message: 'rainbow' },
+      { name: 'Button 6', message: 'strobo' },
+    ],
+  }, */
 ]
 export default function App() {
   const [message, setMessage] = useState('')

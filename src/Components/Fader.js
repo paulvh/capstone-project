@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 export default function Fader({
-  variables = { name: '', min: 0, max: 100 },
+  variables = { name: '', min: '0', max: '100' },
   sendMessage = () => console.log(),
 }) {
   return (
@@ -14,8 +14,8 @@ export default function Fader({
           type="range"
           min={variables.min}
           max={variables.max}
-          /* value={variables.min} */
           onChange={onChange}
+          defaultValue="0"
         />
       </StyledLabel>
     </>

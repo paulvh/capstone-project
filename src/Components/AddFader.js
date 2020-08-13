@@ -5,6 +5,7 @@ export default function AddFader({ editedInterface, setEditedInterface }) {
   const [props, setProps] = useState({ name: '', min: '', max: '' })
   return (
     <StyledForm id="addElement" onSubmit={handleSubmit}>
+      <StyledH3>Fader-Properties:</StyledH3>
       <StyledLabel>
         <StyledInput
           name="name"
@@ -61,10 +62,17 @@ const StyledLabel = styled.label`
   box-shadow: 3px 3px 6px #141628, -3px -3px 6px #3a4072;
   padding: 15px;
   border-radius: 10px;
-  text-align: center;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const StyledForm = styled.form`
   display: grid;
   gap: 20px;
+`
+
+const StyledH3 = styled.h3`
+  margin-top: 30px;
 `

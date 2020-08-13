@@ -11,8 +11,9 @@ export default function AddButton({
 
   useEffect(() => {
     let newButtonGroup = [...buttonGroup]
-    newButtonGroup[buttonNumber] = props
+    newButtonGroup[buttonNumber] = { ...props }
     setButtonGroup(newButtonGroup)
+    // eslint-disable-next-line
   }, [props])
 
   return (
@@ -61,7 +62,10 @@ const StyledLabel = styled.label`
   box-shadow: 3px 3px 6px #141628, -3px -3px 6px #3a4072;
   padding: 15px;
   border-radius: 10px;
-  text-align: center;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const StyledDiv = styled.div`

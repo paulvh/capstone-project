@@ -30,7 +30,14 @@ export default function Footer({
     return (
       <StyledFooter>
         <Button type="misc" name="Back" onClick={() => setPathto('/')} />
-        <Button type="misc" name="Save" onClick={saveFunction} />
+        <Button
+          type="misc"
+          name="Save"
+          onClick={() => {
+            saveFunction()
+            setPathto('/')
+          }}
+        />
       </StyledFooter>
     )
   }
